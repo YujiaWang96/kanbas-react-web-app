@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Account from "./acount/index";
 import Dashboard from "./dashboard";
 import NavigationPanel from "./navigationPanel";

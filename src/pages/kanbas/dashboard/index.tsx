@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Cs1234 from "./cs1234";
 
 const Dashboard = () => {
