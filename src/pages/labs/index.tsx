@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, Routes, Route, Navigate } from "react-router-dom";
 import Labs1 from "./labs1";
-import LabNavigation from "./labNavigation";
+import TOC from "./labNavigation";
 const Labs = () => {
   return (
     <div>
       <h1>This is Lab</h1>
       <h1>Labs:</h1>
-      <LabNavigation />
+      <TOC />
       <h1>Name : Yujia Wang </h1>
       <h3 style={{ marginBottom: "50px" }}> wang.yujia5@northeastern.edu</h3>
       <Routes>
