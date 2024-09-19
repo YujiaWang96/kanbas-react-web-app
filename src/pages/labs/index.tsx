@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Labs1 from "./labs1";
 import TOC from "./labNavigation";
 const Labs = () => {

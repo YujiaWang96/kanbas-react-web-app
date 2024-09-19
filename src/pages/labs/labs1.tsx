@@ -111,11 +111,12 @@ export default function Labs1() {
         <img
           width="400px"
           src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap2.jpg"
+          alt=""
         />
         <br />
         Loading a local image:
         <br />
-        <img src="images/teslabot.jpg" height="200px" />
+        <img src="images/teslabot.jpg" height="200px" alt="" />
       </div>
 
       <div>
