@@ -7,6 +7,7 @@ const Labs = () => {
     <div>
       <h1>This is Lab</h1>
       <h1>Labs:</h1>
+      {/*  */}
       <TOC />
       <h1>Name : Yujia Wang </h1>
       <h3 style={{ marginBottom: "50px" }}> wang.yujia5@northeastern.edu</h3>
