@@ -9,7 +9,7 @@ const NavigationPanel = () => {
       </a>
       <br />
       <Link to="/kanbas/account" id="wd-account-link">
-        Account
+        Account.
       </Link>
       <br />
       <Link to="/kanbas/dashboard" id="wd-dashboard-link">
