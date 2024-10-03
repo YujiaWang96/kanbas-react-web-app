@@ -1,0 +1,78 @@
+#wd-dashboard-link:active,
+#wd-dashboard-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-course-link:active,
+#wd-course-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-group-link:active,
+#wd-group-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-calendar-link:active,
+#wd-calendar-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-inbox-link:active,
+#wd-inbox-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-history-link:active,
+#wd-history-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+#wd-studio-link:active,
+#wd-studio-link:focus {
+  background-color: white !important;
+  color: red !important;
+}
+
+@media (min-width: 768px) {
+  .wd-main-content-offset {
+    padding-left: 140px !important;
+  }
+}
+.list-group.wd > .list-group-item {
+  color: red;
+}
+.list-group.wd > .list-group-item.active {
+  color: black;
+  background-color: white;
+  border-left: 3px solid black !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* @media (min-width: 768px) {
+  #wd-kanbas .wd-main-content-offset {
+    padding-left: 140px !important;
+  }
+} */
+
+.btn-secondary {
+  --bs-btn-color: #000 !important;
+  --bs-btn-bg: #c7cdd1 !important;
+  --bs-btn-border-color: #c7cdd1 !important;
+  --bs-btn-hover-color: #fff !important;
+}
+.bg-secondary {
+  --bs-secondary-rgb: 199, 205, 209;
+}
+.list-group-item {
+  --bs-list-group-border-color: gray;
+}
+.wd-lesson {
+  border-left: 3px solid green !important;
+}
