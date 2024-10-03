@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Labs1 from "./labs1";
+import Labs1 from "../labs/lab1/index";
+import Lab2 from "../labs/lab2/index";
 import TOC from "./labNavigation";
 const Labs = () => {
   return (
@@ -14,7 +15,7 @@ const Labs = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/labs" />}></Route>
         <Route path="/labs1" element={<Labs1 />}></Route>
-        <Route path="/labs2" element={<h1>This is Lab2</h1>}></Route>
+        <Route path="/labs2" element={<Lab2 />}></Route>
         <Route path="/labs3" element={<h1>This is Lab3</h1>}></Route>
       </Routes>
     </div>

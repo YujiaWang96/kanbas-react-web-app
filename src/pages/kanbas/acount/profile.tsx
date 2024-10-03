@@ -1,65 +1,110 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const Profile = () => {
+import "bootstrap/dist/css/bootstrap.min.css"; // Make sure Bootstrap is imported
+
+const Profile: React.FC = () => {
   return (
-    <div>
-      <h3>Profile</h3>
-      <table>
-        <tbody>
-          <tr>
-            <td>Name:</td>
-            <td>
-              <input type="text" placeholder="enter your name" />
-            </td>
-          </tr>
-          <tr>
-            <td>Birthday:</td>
-            <td>
-              <input type="date" value="2014-12-21" />
-            </td>
-          </tr>
-          <tr>
-            <td>Gender:</td>
-            <td>
-              <input type="radio" name="gender" />
-              male
-              <input type="radio" name="gender" />
-              female
-            </td>
-          </tr>
-          <tr>
-            <td>Range:</td>
-            <td>
-              <input type="range" min="0" max="20" />
-            </td>
-          </tr>
-          <tr>
-            <td>Class Capacity:</td>
-            <td>
-              <input type="number" max="50" min="15" />
-            </td>
-          </tr>
-          <tr>
-            <td>E-mail:</td>
-            <td>
-              <input type="email" placeholder="enter your email" />
-            </td>
-          </tr>
-          <tr>
-            <td>States:</td>
-            <td>
-              <select>
-                <option>Michigan</option>
-                <option selected>California</option>
-                <option>New York</option>
-                <option>Taxes</option>
-              </select>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <Link to="/kanbas/account/SignOut">Sign Out</Link>
+    <div className="container mt-5 ">
+      <h3 className="mb-4">Profile</h3>
+      <form>
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Alice"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="123"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Alice"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="date"
+              className="form-control"
+              defaultValue="2014-12-21"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="email"
+              className="form-control"
+              defaultValue="alice@123.com"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="number"
+              className="form-control"
+              max="50"
+              min="15"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter your email"
+              style={{ width: "300px" }}
+            />
+          </div>
+        </div>
+
+        <div className="mb-3 row">
+          <div className="col-sm-10">
+            <select className="form-select" style={{ width: "300px" }}>
+              <option>Michigan</option>
+              <option selected>California</option>
+              <option>New York</option>
+              <option>Texas</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <Link
+            to="/kanbas/account/SignOut"
+            className="btn btn-danger"
+            style={{ width: "300px" }}
+          >
+            Sign Up
+          </Link>
+        </div>
+      </form>
     </div>
   );
 };
+
 export default Profile;

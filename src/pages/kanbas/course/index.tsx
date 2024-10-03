@@ -2,59 +2,113 @@ import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import Cs1234Home from "./home";
 import Cs1234Module from "./module";
+import Cs1234Status from "./status";
+import PeopleTable from "./people";
+import { FaBan } from "react-icons/fa6";
+import ModulesControls from "./modules/ModulesControls";
+import Assignment from "./assignment";
+import A1 from "./A1";
 
 export default function Course() {
   return (
     <div>
       <h1>CS 1234 React.js</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td valign="top">
-              <Link to="/kanbas/course/1234/home">Home</Link>
-              <br />
-              <Link to="/kanbas/course/1234/modules">Modules</Link>
-              <br />
-              <Link to="/kanbas/course/1234/piazza">Piazza</Link>
-              <br />
-              <Link to="/kanbas/course/1234/zoom">Zoom</Link>
-              <br />
-              <Link to="/kanbas/course/1234/assignment">Assignments</Link>
-              <br />
-              <Link to="/kanbas/course/1234/quizzes">Quizzes</Link>
-              <br />
-              <Link to="/kanbas/course/1234/grades">Grades</Link>
-              <br />
-              <Link to="/kanbas/course/1234/people">People</Link>
-              <br />
-            </td>
-            <td>
-              <Routes>
-                <Route path="/home" element={<Cs1234Home />} />
-                <Route path="/modules" element={<Cs1234Module />} />
-                <Route path="/piazza" element={<h1>This is piazza</h1>} />
-                <Route path="/zoom" element={<h1>This is zoom</h1>} />
-                <Route
-                  path="/assignment"
-                  element={<h1>This is assignment section</h1>}
-                />
-                <Route
-                  path="/quizzes"
-                  element={<h1>This is quiz section</h1>}
-                />
-                <Route
-                  path="/grades"
-                  element={<h1>This is grades section</h1>}
-                />
-                <Route
-                  path="/people"
-                  element={<h1>This is People section</h1>}
-                />
-              </Routes>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <hr />
+      <div className="row">
+        {/* 左侧导航栏 */}
+        <div
+          className="col-2 d-none d-md-block"
+          style={{
+            position: "fixed",
+            height: "100vh",
+            overflowY: "auto",
+          }}
+        >
+          <div
+            id="wd-courses-navigation"
+            className="wd list-group fs-5 rounded-0"
+          >
+            <Link
+              id="wd-course-home-link"
+              className="list-group-item active border border-0"
+              to="/kanbas/course/1234/home"
+            >
+              Home
+            </Link>
+            <Link
+              id="wd-course-modules-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/modules"
+            >
+              Modules
+            </Link>
+            <Link
+              id="wd-course-piazza-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/piazza"
+            >
+              Piazza
+            </Link>
+            <Link
+              id="wd-course-zoom-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/zoom"
+            >
+              Zoom
+            </Link>
+            <Link
+              id="wd-course-assignments-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/assignment"
+            >
+              Assignments
+            </Link>
+            <Link
+              id="wd-course-quizzes-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/quizzes"
+            >
+              Quizzes
+            </Link>
+            <Link
+              id="wd-course-grades-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/grades"
+            >
+              Grades
+            </Link>
+            <Link
+              id="wd-course-people-link"
+              className="list-group-item border border-0"
+              to="/kanbas/course/1234/people"
+            >
+              People
+            </Link>
+          </div>
+        </div>
+
+        {/* 主要内容区域 */}
+        <div className="col-10 offset-1 col-md-8 offset-md-2">
+          <div>
+            <Routes>
+              <Route path="/home" element={<Cs1234Home />} />
+              <Route path="/modules" element={<Cs1234Module />} />
+              <Route path="/piazza" element={<h1>This is piazza</h1>} />
+              <Route path="/zoom" element={<h1>This is zoom</h1>} />
+              <Route path="/assignment/*" element={<Assignment />} />
+              <Route path="/quizzes" element={<h1>This is quiz section</h1>} />
+              <Route path="/grades" element={<h1>This is grades section</h1>} />
+              <Route path="/people" element={<PeopleTable />} />
+              <Route path="/assignment/A1" element={<A1 />} />
+            </Routes>
+          </div>
+        </div>
+
+        {/* 右侧状态区域 */}
+        <div className="col-2 d-none d-lg-block">
+          <Cs1234Status />
+        </div>
+      </div>
     </div>
   );
 }
