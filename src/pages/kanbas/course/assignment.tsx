@@ -1,15 +1,13 @@
 import React from "react";
-import ModulesControls from "./modules/ModulesControls";
+
 import "../index.css";
 import LessonControlButtons from "./modules/LessonControlButton";
 import { BsGripVertical } from "react-icons/bs";
-import WeekControlButtons from "./modules/WeekControlButton";
+
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
 import { MdOutlineEventNote } from "react-icons/md";
 import { Link } from "react-router-dom";
-import A1 from "./A1";
-import { Route, Routes } from "react-router-dom";
 
 import { FaPlus } from "react-icons/fa6";
 
