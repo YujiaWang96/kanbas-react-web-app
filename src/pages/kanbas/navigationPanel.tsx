@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid } from "react-icons/lia";
-<<<<<<< HEAD
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
-=======
-import { FaRegCircleUser } from "react-icons/fa6";
->>>>>>> a39fa45b540c14a67f53c7f37829d60016af9bc8
 import { BsInboxes } from "react-icons/bs";
 import { CiAlarmOn } from "react-icons/ci";
 import { TbSolarPanel } from "react-icons/tb";
@@ -35,10 +31,7 @@ const NavigationPanel = () => {
         target="_blank"
         href="https://www.northeastern.edu/"
         className="list-group-item bg-black border-0 text-center"
-<<<<<<< HEAD
-=======
         rel="noreferrer"
->>>>>>> a39fa45b540c14a67f53c7f37829d60016af9bc8
       >
         <img src="images/NEU.png" width="60px" alt="NEU" />
       </a>
