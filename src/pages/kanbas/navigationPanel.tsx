@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid } from "react-icons/lia";
-import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import { FaRegCircleUser } from "react-icons/fa6";
 import { BsInboxes } from "react-icons/bs";
 import { CiAlarmOn } from "react-icons/ci";
 import { TbSolarPanel } from "react-icons/tb";
@@ -31,6 +31,7 @@ const NavigationPanel = () => {
         target="_blank"
         href="https://www.northeastern.edu/"
         className="list-group-item bg-black border-0 text-center"
+        rel="noreferrer"
       >
         <img src="images/NEU.png" width="60px" alt="NEU" />
       </a>
