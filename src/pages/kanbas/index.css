@@ -76,3 +76,17 @@ body * {
 .wd-lesson {
   border-left: 3px solid green !important;
 }
+
+.wd.list-group-item {
+  color: red; /* 设置字体颜色为红色 */
+}
+
+.wd.list-group-item.active {
+  color: darkred; /* 或者设置选中状态的颜色 */
+}
+
+.list-group.wd > .list-group-item.active {
+  color: black; /* 选中状态的颜色 */
+  background-color: white; /* 选中状态的背景颜色 */
+  border-left: 3px solid black !important; /* 选中状态的左边框 */
+}
