@@ -1,15 +1,20 @@
-import React from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Routes, Route, useLocation } from "react-router-dom";
 import Cs1234Home from "./home";
 import Cs1234Module from "./module";
 import Cs1234Status from "./status";
 import PeopleTable from "./people";
-import { FaBan } from "react-icons/fa6";
-import ModulesControls from "./modules/ModulesControls";
 import Assignment from "./assignment";
 import A1 from "./A1";
 
 export default function Course() {
+  const location = useLocation();
+  const [activeLink, setActiveLink] = useState(location.pathname);
+
+  const handleLinkClick = (path: string) => {
+    setActiveLink(path);
+  };
+
   return (
     <div>
       <h1>CS 1234 React.js</h1>
@@ -30,57 +35,81 @@ export default function Course() {
           >
             <Link
               id="wd-course-home-link"
-              className="list-group-item active border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/home" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/home"
+              onClick={() => handleLinkClick("/kanbas/course/1234/home")}
             >
               Home
             </Link>
             <Link
               id="wd-course-modules-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/modules" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/modules"
+              onClick={() => handleLinkClick("/kanbas/course/1234/modules")}
             >
               Modules
             </Link>
             <Link
               id="wd-course-piazza-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/piazza" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/piazza"
+              onClick={() => handleLinkClick("/kanbas/course/1234/piazza")}
             >
               Piazza
             </Link>
             <Link
               id="wd-course-zoom-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/zoom" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/zoom"
+              onClick={() => handleLinkClick("/kanbas/course/1234/zoom")}
             >
               Zoom
             </Link>
             <Link
               id="wd-course-assignments-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/assignment" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/assignment"
+              onClick={() => handleLinkClick("/kanbas/course/1234/assignment")}
             >
               Assignments
             </Link>
             <Link
               id="wd-course-quizzes-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/quizzes" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/quizzes"
+              onClick={() => handleLinkClick("/kanbas/course/1234/quizzes")}
             >
               Quizzes
             </Link>
             <Link
               id="wd-course-grades-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/grades" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/grades"
+              onClick={() => handleLinkClick("/kanbas/course/1234/grades")}
             >
               Grades
             </Link>
             <Link
               id="wd-course-people-link"
-              className="list-group-item border border-0"
+              className={`list-group-item border border-0 ${
+                activeLink === "/kanbas/course/1234/people" ? "active" : ""
+              }`}
               to="/kanbas/course/1234/people"
+              onClick={() => handleLinkClick("/kanbas/course/1234/people")}
             >
               People
             </Link>
@@ -105,9 +134,13 @@ export default function Course() {
         </div>
 
         {/* 右侧状态区域 */}
-        <div className="col-2 d-none d-lg-block">
-          <Cs1234Status />
-        </div>
+        {["/kanbas/course/1234/home", "/kanbas/course/1234/modules"].includes(
+          location.pathname
+        ) && (
+          <div className="col-2 d-none d-lg-block">
+            <Cs1234Status />
+          </div>
+        )}
       </div>
     </div>
   );

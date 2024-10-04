@@ -1,15 +1,13 @@
 import React from "react";
-import ModulesControls from "./modules/ModulesControls";
+
 import "../index.css";
 import LessonControlButtons from "./modules/LessonControlButton";
 import { BsGripVertical } from "react-icons/bs";
-import WeekControlButtons from "./modules/WeekControlButton";
+
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaAngleDown } from "react-icons/fa6";
 import { MdOutlineEventNote } from "react-icons/md";
 import { Link } from "react-router-dom";
-import A1 from "./A1";
-import { Route, Routes } from "react-router-dom";
 
 import { FaPlus } from "react-icons/fa6";
 
@@ -18,12 +16,13 @@ export default function Assignment() {
     <div>
       <ul id="wd-modules" className="list-group rounded-0 ">
         <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-          <div className="wd-title p-3 ps-2 bg-secondary">
-            {" "}
-            <BsGripVertical className="me-2 fs-3" />
-            <FaAngleDown />
-            ASSIGNMENTS
-            <span style={{ marginLeft: "460px" }}>
+          <div className="wd-title p-3 ps-2 bg-secondary d-flex justify-content-between align-items-center">
+            <div className="d-flex align-items-center">
+              <BsGripVertical className="me-2 fs-3" />
+              <FaAngleDown />
+              <span>ASSIGNMENTS</span>
+            </div>
+            <div className="d-flex align-items-center">
               <button type="button" className="btn btn-outline-dark">
                 40% of Total
               </button>
@@ -31,7 +30,7 @@ export default function Assignment() {
               <FaPlus />
               <span>&nbsp;</span>
               <IoEllipsisVertical className="fs-4" />
-            </span>
+            </div>
           </div>
           <ul className="wd-lessons list-group rounded-0">
             <li
