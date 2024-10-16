@@ -1,0 +1,166 @@
+[
+  { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101" },
+  { "_id": "A102", "title": "Combustion Analysis", "course": "RS101" },
+  { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101" },
+  { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102" },
+  { "_id": "A202", "title": "Flow Analysis", "course": "RS102" },
+  { "_id": "A203", "title": "Heating Analysis", "course": "RS102" },
+  { "_id": "A301", "title": "Structural Design Task", "course": "RS103" },
+  { "_id": "A302", "title": "Orbital Calculations", "course": "RS103" },
+  { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103" },
+  {
+    "_id": "A401",
+    "title": "Satellite Communication Assignment",
+    "course": "RS104"
+  },
+  { "_id": "A402", "title": "Communication Link Design", "course": "RS104" },
+  { "_id": "A403", "title": "Signal Processing Quiz", "course": "RS104" },
+
+  { "_id": "A501", "title": "Launch Vehicle Analysis", "course": "RS105" },
+  { "_id": "A502", "title": "Payload Integration Project", "course": "RS105" },
+  { "_id": "A503", "title": "Launch Dynamics Quiz", "course": "RS105" },
+
+  { "_id": "A601", "title": "Space Mission Design", "course": "RS106" },
+  { "_id": "A602", "title": "Mission Planning Task", "course": "RS106" },
+  {
+    "_id": "A603",
+    "title": "Trajectory Calculation Assignment",
+    "course": "RS106"
+  },
+
+  {
+    "_id": "A701",
+    "title": "Thermal Protection System Analysis",
+    "course": "RS107"
+  },
+  {
+    "_id": "A702",
+    "title": "Heat Transfer Mechanisms Project",
+    "course": "RS107"
+  },
+  { "_id": "A703", "title": "Thermal Systems Design Task", "course": "RS107" },
+
+  {
+    "_id": "A801",
+    "title": "Attitude Control System Assignment",
+    "course": "RS108"
+  },
+  { "_id": "A802", "title": "Control System Simulation", "course": "RS108" },
+  { "_id": "A803", "title": "Stability and Control Exam", "course": "RS108" },
+
+  { "_id": "A901", "title": "Satellite Navigation Systems", "course": "RS109" },
+  { "_id": "A902", "title": "GPS Signal Analysis", "course": "RS109" },
+  {
+    "_id": "A903",
+    "title": "Satellite-Based Navigation Task",
+    "course": "RS109"
+  },
+
+  {
+    "_id": "A1001",
+    "title": "Space Debris and Collision Avoidance",
+    "course": "RS110"
+  },
+  { "_id": "A1002", "title": "Collision Risk Analysis", "course": "RS110" },
+  { "_id": "A1003", "title": "Debris Mitigation Project", "course": "RS110" },
+
+  { "_id": "A1101", "title": "Rocket Engine Testing", "course": "RS111" },
+  { "_id": "A1102", "title": "Test Stand Design Task", "course": "RS111" },
+  { "_id": "A1103", "title": "Test Data Analysis", "course": "RS111" },
+
+  {
+    "_id": "A1201",
+    "title": "Microgravity Effects on Materials",
+    "course": "RS112"
+  },
+  { "_id": "A1202", "title": "Materials Science in Space", "course": "RS112" },
+  {
+    "_id": "A1203",
+    "title": "Space Environment Impact Quiz",
+    "course": "RS112"
+  },
+
+  { "_id": "A1301", "title": "Advanced Propulsion Systems", "course": "RS113" },
+  { "_id": "A1302", "title": "Ion Thruster Design", "course": "RS113" },
+  { "_id": "A1303", "title": "Plasma Propulsion Exam", "course": "RS113" },
+
+  {
+    "_id": "A1401",
+    "title": "Space Law and Policy Assignment",
+    "course": "RS114"
+  },
+  {
+    "_id": "A1402",
+    "title": "International Space Regulations",
+    "course": "RS114"
+  },
+  { "_id": "A1403", "title": "Space Policy Analysis Task", "course": "RS114" },
+
+  {
+    "_id": "A1501",
+    "title": "Artificial Intelligence in Space Systems",
+    "course": "RS115"
+  },
+  { "_id": "A1502", "title": "AI Control Systems Design", "course": "RS115" },
+  {
+    "_id": "A1503",
+    "title": "Machine Learning Applications in Space",
+    "course": "RS115"
+  },
+
+  {
+    "_id": "A1601",
+    "title": "Human Spaceflight Assignment",
+    "course": "RS116"
+  },
+  {
+    "_id": "A1602",
+    "title": "Life Support Systems Project",
+    "course": "RS116"
+  },
+  { "_id": "A1603", "title": "Space Habitat Design Task", "course": "RS116" },
+
+  { "_id": "A1701", "title": "Lunar Exploration Mission", "course": "RS117" },
+  { "_id": "A1702", "title": "Moon Base Design", "course": "RS117" },
+  { "_id": "A1703", "title": "Lunar Rover Project", "course": "RS117" },
+
+  { "_id": "A1801", "title": "Mars Exploration Assignment", "course": "RS118" },
+  { "_id": "A1802", "title": "Martian Atmosphere Analysis", "course": "RS118" },
+  { "_id": "A1803", "title": "Mars Rover Mission Task", "course": "RS118" },
+
+  {
+    "_id": "A1901",
+    "title": "Astrobiology Research Project",
+    "course": "RS119"
+  },
+  { "_id": "A1902", "title": "Life Detection Methods", "course": "RS119" },
+  { "_id": "A1903", "title": "Astrobiology Data Analysis", "course": "RS119" },
+
+  {
+    "_id": "A2001",
+    "title": "Exoplanet Detection Assignment",
+    "course": "RS120"
+  },
+  {
+    "_id": "A2002",
+    "title": "Exoplanet Atmosphere Analysis",
+    "course": "RS120"
+  },
+  { "_id": "A2003", "title": "Exoplanet Mission Planning", "course": "RS120" },
+
+  {
+    "_id": "A2101",
+    "title": "Interstellar Travel Concepts",
+    "course": "RS121"
+  },
+  {
+    "_id": "A2102",
+    "title": "Warp Drive and Propulsion Systems",
+    "course": "RS121"
+  },
+  {
+    "_id": "A2103",
+    "title": "Interstellar Communication Project",
+    "course": "RS121"
+  }
+]

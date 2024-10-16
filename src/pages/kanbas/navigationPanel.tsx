@@ -4,20 +4,28 @@ import { Link } from "react-router-dom";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid } from "react-icons/lia";
-import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import { FaRegCircleUser } from "react-icons/fa6";
 import { BsInboxes } from "react-icons/bs";
-import { CiAlarmOn } from "react-icons/ci";
 import { TbSolarPanel } from "react-icons/tb";
 import { SlPeople } from "react-icons/sl";
 import { GoGear } from "react-icons/go";
-
+import { MdAccessAlarm } from "react-icons/md";
 const NavigationPanel = () => {
-  // State to track the active link
   const [activeLink, setActiveLink] = useState("Dashboard");
 
-  // Function to handle link click
-  const handleLinkClick = (link: string) => {
-    setActiveLink(link);
+  const links = [
+    { label: "Dashboard", path: "/Kanbas/Dashboard", icon: AiOutlineDashboard },
+    { label: "Courses", path: "/Kanbas/Courses", icon: LiaBookSolid },
+    { label: "Groups", path: "/Kanbas/Groups", icon: SlPeople },
+    { label: "Calendar", path: "/Kanbas/Calendar", icon: IoCalendarOutline },
+    { label: `Inbox`, path: "/Kanbas/Inbox", icon: BsInboxes },
+    { label: "History", path: "/Kanbas/History", icon: MdAccessAlarm },
+    { label: "Studio", path: "/Kanbas/Studio", icon: TbSolarPanel },
+    { label: "Labs", path: "/labs", icon: GoGear },
+  ];
+
+  const handleLinkClick = (label: string) => {
+    setActiveLink(label);
   };
 
   return (
@@ -35,6 +43,7 @@ const NavigationPanel = () => {
       >
         <img src="images/NEU.png" width="60px" alt="NEU" />
       </a>
+
       <Link
         to="/Kanbas/Account"
         id="wd-account-link"
@@ -44,102 +53,22 @@ const NavigationPanel = () => {
         Account
       </Link>
 
-      <Link
-        to="/Kanbas/Dashboard"
-        id="wd-dashboard-link"
-        className={`list-group-item text-center border-0 ${
-          activeLink === "Dashboard"
-            ? "bg-white text-danger"
-            : "bg-black text-white"
-        }`}
-        onClick={() => handleLinkClick("Dashboard")}
-      >
-        <AiOutlineDashboard className="fs-2 text-danger" />
-        Dashboard
-      </Link>
-
-      <Link
-        to="/Kanbas/Courses"
-        id="wd-course-link"
-        className={`list-group-item text-white ${
-          activeLink === "Courses" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("Courses")}
-      >
-        <LiaBookSolid className="fs-2 text-danger" />
-        Courses
-      </Link>
-
-      <Link
-        to="/Kanbas/Groups"
-        id="wd-group-link"
-        className={`list-group-item text-white ${
-          activeLink === "Groups" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("Groups")}
-      >
-        <SlPeople className="fs-2 text-danger" />
-        Groups
-      </Link>
-
-      <Link
-        to="/kanbas/calendar"
-        id="wd-calendar-link"
-        className={`list-group-item text-white ${
-          activeLink === "Calendar" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("Calendar")}
-      >
-        <IoCalendarOutline className="fs-2 text-danger" />
-        Calendar
-      </Link>
-
-      <Link
-        to="/kanbas/inbox"
-        id="wd-inbox-link"
-        className={`list-group-item text-white ${
-          activeLink === "Inbox" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("Inbox")}
-      >
-        <BsInboxes className="fs-2 text-danger" />
-        <br />
-        Inbox
-      </Link>
-
-      <Link
-        to="/kanbas/history"
-        id="wd-history-link"
-        className={`list-group-item text-white ${
-          activeLink === "History" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("History")}
-      >
-        <CiAlarmOn className="fs-1 text-danger" />
-        History
-      </Link>
-
-      <Link
-        to="/kanbas/studio"
-        id="wd-studio-link"
-        className={`list-group-item text-white ${
-          activeLink === "Studio" ? "bg-white text-danger" : "bg-black"
-        } text-center border-0`}
-        onClick={() => handleLinkClick("Studio")}
-      >
-        <TbSolarPanel className="fs-1 text-danger" />
-        <br />
-        Studio
-      </Link>
-
-      <Link
-        to="/labs"
-        className="list-group-item text-white bg-black text-center border-0"
-      >
-        <GoGear className="fs-2 text-danger" />
-        <br />
-        Labs
-      </Link>
+      {links.map((link) => (
+        <Link
+          key={link.label}
+          to={link.path}
+          className={`list-group-item text-center border-0 ${
+            activeLink === link.label
+              ? "bg-white text-danger"
+              : "bg-black text-white"
+          }`}
+          onClick={() => handleLinkClick(link.label)}
+        >
+          <link.icon className="fs-2 text-danger" />
+          {link.label === "Index" || "Labs" || "Studio" ? <br /> : ""}
+          {link.label}
+        </Link>
+      ))}
     </div>
   );
 };

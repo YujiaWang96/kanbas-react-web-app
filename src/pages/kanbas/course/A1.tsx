@@ -2,8 +2,19 @@ import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiOutlineCalendar } from "react-icons/ai";
+import { useParams } from "react-router";
+import * as db from "../Database";
 
 const AssignmentForm = () => {
+  const { cid, aid } = useParams();
+  const assignment = db.assignments;
+  var name;
+  for (let i = 0; i < assignment.length; i++) {
+    if (assignment[i]._id === aid) {
+      name = assignment[i].title;
+    }
+  }
+
   return (
     <div className="container mt-5">
       <div>Assignment Name</div>
@@ -11,7 +22,7 @@ const AssignmentForm = () => {
       <input
         type="text"
         className="form-control"
-        placeholder="A1"
+        placeholder={name}
         aria-label="A1"
         aria-describedby="addon-wrapping"
       ></input>
@@ -177,70 +188,6 @@ const AssignmentForm = () => {
           </div>
         </div>
 
-        {/* <div className="mb-3 d-flex " style={{ width: "460px" }}>
-          <label
-            htmlFor="assignTo"
-            className="form-label me-2 mb-0 text-nowrap mt-1"
-          >
-            Assign
-          </label>
-          <div className="card" style={{ width: "400px", marginTop: "10px" }}>
-            <div className="card-body">
-              <strong>Assign to </strong>
-              <br />
-              <input
-                type="text"
-                className="form-control w-100"
-                id="assignTo"
-                defaultValue="Everyone"
-              />
-            </div>
-
-            <div className="mb-3 d-flex align-items-center">
-              <label htmlFor="dueDate" className="form-label me-2 mb-0">
-                Due
-              </label>
-              <div></div>
-              <br />
-              <input
-                type="date"
-                className="form-control w-100"
-                id="dueDate"
-                defaultValue="2024-05-13"
-              />
-              <input
-                type="time"
-                className="form-control w-100 ms-2"
-                id="dueTime"
-                defaultValue="23:59"
-              />
-            </div>
-
-            <div className="mb-3 d-flex align-items-center">
-              <label htmlFor="availableFrom" className="form-label me-2 mb-0">
-                Available from
-              </label>
-              <input
-                type="date"
-                className="form-control w-100"
-                id="availableFrom"
-                defaultValue="2024-05-06"
-              />
-            </div>
-
-            <div className="mb-3 d-flex align-items-center">
-              <label htmlFor="availableUntil" className="form-label me-2 mb-0">
-                Until
-              </label>
-              <input
-                type="date"
-                className="form-control w-100"
-                id="availableUntil"
-                defaultValue="2024-05-13"
-              />
-            </div>
-          </div>
-        </div> */}
         <div className="mb-3 d-flex " style={{ width: "460px" }}>
           <label htmlFor="submissionType" className="form-label me-2 mb-0 mt-2">
             Assign

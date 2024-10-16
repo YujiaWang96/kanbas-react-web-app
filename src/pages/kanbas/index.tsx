@@ -12,7 +12,6 @@ const Kanbas = () => {
       <NavigationPanel />
       <div className="wd-main-content-offset p-3">
         <Routes>
-          <Route path="/*" element={<Navigate to="dashboard" />} />
           <Route path="/account/*" element={<Account />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/course/:cid/*" element={<Course />} />
@@ -22,6 +21,7 @@ const Kanbas = () => {
           <Route path="/inbox" element={<h1>this is inbox</h1>} />
           <Route path="/studio" element={<h1>this is studio</h1>} />
           <Route path="/labs" element={<h1>this is lab</h1>} />
+          <Route path="/*" element={<Navigate to="dashboard" />} />
         </Routes>
       </div>
     </div>
