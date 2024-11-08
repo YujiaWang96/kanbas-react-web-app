@@ -5,26 +5,100 @@ import Dashboard from "./dashboard";
 import NavigationPanel from "./navigationPanel";
 import Course from "./course";
 import "./index.css";
+import * as db from "../kanbas/Database";
+import { useState } from "react";
+import store from "./store";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./acount/ProtectedRoute";
 
 const Kanbas = () => {
+  const [courses, setCourses] = useState<any>(db.courses);
+  const [course, setCourse] = useState<any>({
+    _id: "0",
+    name: "New Course",
+    number: "New Number",
+    startDate: "2023-09-10",
+    endDate: "2023-12-15",
+    image: "/images/reactjs.jpg",
+    description: "New Description",
+  });
+  const addNewCourse = () => {
+    const newCourse = { ...course, _id: new Date().getTime().toString() }; // 创建新课程并生成唯一 ID
+
+    // 使用回调方式更新 courses 确保拿到最新的 courses 状态
+    setCourses((prevCourses: any) => {
+      return [...prevCourses, newCourse]; // 将新课程添加到最新的 courses 数组中
+    });
+
+    // 重置课程表单为初始值
+    setCourse({
+      _id: "0",
+      name: "New Course",
+      number: "New Number",
+      startDate: "2023-09-10",
+      endDate: "2023-12-15",
+      image: "/images/reactjs.jpg",
+      description: "New Description",
+    });
+  };
+  const deleteCourse = (courseId: string) => {
+    setCourses(courses.filter((course: any) => course._id !== courseId));
+  };
+  const updateCourse = () => {
+    setCourses(
+      //更新完后重新setcouses得到新courses数组
+      courses.map((c: any) => {
+        if (c._id === course._id) {
+          //成功匹配到数组里对应的目标course，在下面的input框里自动给到value
+          return course;
+        } else {
+          return c;
+        }
+      })
+    );
+  };
   return (
-    <div>
-      <NavigationPanel />
-      <div className="wd-main-content-offset p-3">
-        <Routes>
-          <Route path="/account/*" element={<Account />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/course/:cid/*" element={<Course />} />
-          <Route path="/calendar" element={<h1>this is calendar</h1>} />
-          <Route path="/groups" element={<h1>this is group</h1>} />
-          <Route path="/history" element={<h1>this is histroy</h1>} />
-          <Route path="/inbox" element={<h1>this is inbox</h1>} />
-          <Route path="/studio" element={<h1>this is studio</h1>} />
-          <Route path="/labs" element={<h1>this is lab</h1>} />
-          <Route path="/*" element={<Navigate to="dashboard" />} />
-        </Routes>
+    <Provider store={store}>
+      <div>
+        <NavigationPanel />
+        <div className="wd-main-content-offset p-3">
+          <Routes>
+            <Route path="/account/*" element={<Account />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard
+                    courses={courses}
+                    course={course}
+                    setCourse={setCourse}
+                    setCourses={setCourses}
+                    addNewCourse={addNewCourse}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
+                  />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/course/:cid/*"
+              element={
+                <ProtectedRoute>
+                  <Course />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/calendar" element={<h1>this is calendar</h1>} />
+            <Route path="/groups" element={<h1>this is group</h1>} />
+            <Route path="/history" element={<h1>this is histroy</h1>} />
+            <Route path="/inbox" element={<h1>this is inbox</h1>} />
+            <Route path="/studio" element={<h1>this is studio</h1>} />
+            <Route path="/labs" element={<h1>this is lab</h1>} />
+            <Route path="/*" element={<Navigate to="dashboard" />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
 export default Kanbas;

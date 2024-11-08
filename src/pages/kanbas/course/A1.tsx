@@ -2,62 +2,95 @@ import React from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { useParams } from "react-router";
-import * as db from "../Database";
+import { useNavigate, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { updateAssignment } from "./assigments/reducer";
 
-const AssignmentForm = () => {
+const AssignmentForm = ({
+  titles,
+  setTitles,
+  description,
+  setDescription,
+  points,
+  setPoints,
+  dueDate,
+  setDueDate,
+  availableFromDate,
+  setAvailableFromDate,
+  availableUntilDate,
+  setAvailableUntilDate,
+}: {
+  titles: string;
+  setTitles: (titles: string) => void;
+  description: string;
+  setDescription: (description: string) => void;
+  points: number;
+  setPoints: (points: number) => void;
+  dueDate: string;
+  setDueDate: (dueDate: string) => void;
+  availableFromDate: string;
+  setAvailableFromDate: (availableFromDate: string) => void;
+  availableUntilDate: string;
+  setAvailableUntilDate: (availableUntilDate: string) => void;
+}) => {
   const { cid, aid } = useParams();
-  const assignment = db.assignments;
-  var name;
-  for (let i = 0; i < assignment.length; i++) {
-    if (assignment[i]._id === aid) {
-      name = assignment[i].title;
-    }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const assignments = useSelector(
+    (state: any) => state.AssignmentReducer.assignments
+  );
+
+  // 查找目标 assignment
+  const target = assignments.find(
+    (assignment: any) => assignment.course === cid && assignment._id === aid
+  );
+
+  if (!target) {
+    return <div>Assignment not found</div>;
   }
+
+  const handleUpdate = () => {
+    const newAssignment = {
+      _id: target._id, // Use current timestamp for unique ID
+      title: titles,
+      course: cid,
+      description: description,
+      points: points,
+      due_date: dueDate,
+      avaliable_from_date: availableFromDate,
+      avaliable_until_date: availableUntilDate,
+    };
+    dispatch(updateAssignment(newAssignment));
+    navigate(`/kanbas/course/${cid}/assignment`);
+  };
 
   return (
     <div className="container mt-5">
       <div>Assignment Name</div>
-
       <input
         type="text"
         className="form-control"
-        placeholder={name}
+        placeholder={target.title}
+        defaultValue={target.title}
         aria-label="A1"
+        onChange={(e: any) => setTitles(e.target.value)}
         aria-describedby="addon-wrapping"
-      ></input>
-      <div
+      />
+
+      {/* <div
         className="card"
         style={{ width: "100%", marginTop: "10px", marginBottom: "10px" }}
-      >
-        <div className="card-body">
-          <p className="card-text">
-            The assignment is{" "}
-            <span style={{ color: "red" }}>available online</span>.<br />
-            Submit a link to the landing page of your Web application running on
-            <span style={{ textDecoration: "underline dashed red" }}>
-              {" "}
-              Netlify.
-            </span>
-            <br />
-            &nbsp;·&nbsp;Your full name and section.
-            <br />
-            &nbsp;·&nbsp;Links to each of the lab assignments.
-            <br />
-            &nbsp;·&nbsp;Kanbas application.
-            <br />
-            &nbsp;·&nbsp;Links to all relevant source code repositories.
-            <br />
-            The{" "}
-            <span style={{ textDecoration: "underline dashed red" }}>
-              {" "}
-              Kanbas
-            </span>{" "}
-            application should include a link to navigate back to the landing
-            page.
-          </p>
-        </div>
-      </div>
+      > */}
+      {/* <div className="card-body">
+          <p className="card-text">{target.description}</p>
+        </div> */}
+      <textarea
+        className="form-control mb-3"
+        defaultValue={target.description}
+        onChange={(e) => setDescription(e.target.value)}
+        style={{ width: "100%", height: "100px", marginTop: "10px" }}
+      />
+      {/* </div> */}
 
       <form
         style={{
@@ -77,7 +110,8 @@ const AssignmentForm = () => {
             type="number"
             className="form-control "
             id="points"
-            defaultValue="100"
+            defaultValue={target.points}
+            onChange={(e) => setPoints(Number(e.target.value))}
             style={{ width: "400px" }}
           />
         </div>
@@ -212,51 +246,44 @@ const AssignmentForm = () => {
                     <label htmlFor="dueDate" className="form-label">
                       Due
                     </label>
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="dueDate"
-                        placeholder="May 13, 2024, 11:59 PM"
-                      />
-                      <span className="input-group-text">
-                        <AiOutlineCalendar />
-                      </span>
-                    </div>
+
+                    <input
+                      defaultValue={target.due_date}
+                      // value={target.due_date}
+                      id="wd-dob"
+                      className="form-control mb-2"
+                      type="date"
+                      onChange={(e) => setDueDate(e.target.value)}
+                    />
                   </div>
+
                   <div style={{ display: "flex" }}>
                     <div className="mb-3 ">
                       <label htmlFor="availableFrom" className="form-label">
                         Available from
                       </label>
-                      <div className="input-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="availableFrom"
-                          placeholder="May 6, 2024, 12:00 AM"
-                        />
-                        <span className="input-group-text">
-                          <AiOutlineCalendar />
-                        </span>
-                      </div>
+                      <input
+                        defaultValue={target.avaliable_from_date}
+                        // value={target.avaliable_from_date}
+                        id="wd-dob"
+                        className="form-control mb-2"
+                        type="date"
+                        onChange={(e) => setAvailableFromDate(e.target.value)}
+                      />
                     </div>
                     <div>&nbsp;</div>
-                    <div className="mb-3">
+                    <div className="mb-3 ml-10" style={{ marginLeft: "40px" }}>
                       <label htmlFor="until" className="form-label">
                         Until
                       </label>
-                      <div className="input-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="until"
-                          placeholder="Optional"
-                        />
-                        <span className="input-group-text">
-                          <AiOutlineCalendar />
-                        </span>
-                      </div>
+                      <input
+                        defaultValue={target.avaliable_until_date}
+                        id="wd-dob"
+                        className="form-control mb-2"
+                        type="date"
+                        //value={target.avaliable_until_date}
+                        onChange={(e) => setAvailableUntilDate(e.target.value)}
+                      />
                     </div>
                   </div>
                 </form>
@@ -266,10 +293,18 @@ const AssignmentForm = () => {
         </div>
 
         <div className="d-flex justify-content-end">
-          <button type="button" className="btn btn-secondary me-2">
+          <button
+            type="button"
+            className="btn btn-secondary me-2"
+            onClick={() => navigate(`/kanbas/course/${cid}/assignment`)}
+          >
             Cancel
           </button>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-danger"
+            onClick={handleUpdate}
+          >
             Save
           </button>
         </div>

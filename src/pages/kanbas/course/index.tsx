@@ -8,6 +8,9 @@ import Assignment from "./assignment";
 import A1 from "./A1";
 import { courses } from "../Database";
 import { FaAlignJustify } from "react-icons/fa";
+import AddingAssignment from "./addingAssignment";
+import * as db from "../Database";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Course() {
   const location = useLocation();
@@ -19,7 +22,6 @@ export default function Course() {
   const handleLinkClick = (path: string) => {
     setActiveLink(path);
   };
-
   // 定义链接数组
   const links = [
     {
@@ -63,6 +65,36 @@ export default function Course() {
       label: "People",
     },
   ];
+  //assignments的数据传递
+  const [titles, setTitles] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [points, setPoints] = useState<number>(0); // 初始化为 string 类型
+  const [dueDate, setDueDate] = useState<string>("");
+  const [availableFromDate, setAvailableFromDate] = useState<string>("");
+  const [availableUntilDate, setAvailableUntilDate] = useState<string>("");
+  const [assignments, setAssignments] = useState(db.assignments);
+  // const assignments = useSelector((state: any) => state.AssignmentReducer);
+  // const dispatch = useDispatch();
+
+  const addingAssignment = () => {
+    const newAssignment = {
+      _id: new Date().getTime().toString(), // Simple unique ID generation
+      title: titles,
+      course: String(cid), // Ensure course ID is a string
+      description: description,
+      points: Number(points),
+      due_date: dueDate,
+      avaliable_from_date: availableFromDate,
+      avaliable_until_date: availableUntilDate,
+    };
+    setAssignments([...assignments, newAssignment]);
+    setTitles("");
+    setDescription("");
+    setPoints(0);
+    setDueDate("");
+    setAvailableFromDate("");
+    setAvailableUntilDate("");
+  };
 
   return (
     <div>
@@ -70,7 +102,6 @@ export default function Course() {
         <FaAlignJustify className="me-4 fs-4 mb-1" />
         {course && course.name} &gt; {pathname.split("/")[4]}
       </h2>
-
       <h3>{cid}</h3>
       <hr />
 
@@ -112,24 +143,71 @@ export default function Course() {
               <Route path="/modules" element={<Cs1234Module />} />
               <Route path="/piazza" element={<h1>This is piazza</h1>} />
               <Route path="/zoom" element={<h1>This is zoom</h1>} />
-              <Route path="/assignment/" element={<Assignment />} />
-              <Route path="/assignment/:aid" element={<A1 />} />
+              <Route
+                path="/assignment/"
+                element={
+                  <Assignment
+                    titles={titles}
+                    setTitles={setTitles}
+                    description={description}
+                    setDescription={setDescription}
+                    points={points}
+                    setPoints={setPoints}
+                    dueDate={dueDate}
+                    setDueDate={setDueDate}
+                    availableFromDate={availableFromDate}
+                    setAvailableFromDate={setAvailableFromDate}
+                    availableUntilDate={availableUntilDate}
+                    setAvailableUntilDate={setAvailableUntilDate}
+                  />
+                }
+              />
+              <Route
+                path="/assignment/:aid"
+                element={
+                  <A1
+                    titles={titles}
+                    setTitles={setTitles}
+                    description={description}
+                    setDescription={setDescription}
+                    points={points}
+                    setPoints={setPoints}
+                    dueDate={dueDate}
+                    setDueDate={setDueDate}
+                    availableFromDate={availableFromDate}
+                    setAvailableFromDate={setAvailableFromDate}
+                    availableUntilDate={availableUntilDate}
+                    setAvailableUntilDate={setAvailableUntilDate}
+                  />
+                }
+              />
               <Route path="/quizzes" element={<h1>This is quiz section</h1>} />
               <Route path="/grades" element={<h1>This is grades section</h1>} />
               <Route path="/people" element={<PeopleTable />} />
+              <Route
+                path="/assignment/add"
+                element={
+                  <AddingAssignment
+                    titles={titles}
+                    setTitles={setTitles}
+                    description={description}
+                    setDescription={setDescription}
+                    points={points}
+                    setPoints={setPoints}
+                    dueDate={dueDate}
+                    setDueDate={setDueDate}
+                    availableFromDate={availableFromDate}
+                    setAvailableFromDate={setAvailableFromDate}
+                    availableUntilDate={availableUntilDate}
+                    setAvailableUntilDate={setAvailableUntilDate}
+                  />
+                }
+              />
               {/* <Route path="/assignment/A1" element={<A1 />} /> */}
             </Routes>
           </div>
         </div>
 
-        {/* 右侧状态区域 */}
-        {/* {["/kanbas/course/1234/home", "/kanbas/course/1234/modules"].includes(
-          location.pathname
-        ) && (
-          <div className="col-2 d-none d-lg-block">
-            <Cs1234Status />
-          </div>
-        )} */}
         {pathname.split("/")[4] === "home" && (
           <div className="col-2 d-none d-lg-block">
             <Cs1234Status />

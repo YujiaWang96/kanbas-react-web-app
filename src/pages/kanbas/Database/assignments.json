@@ -1,166 +1,634 @@
 [
-  { "_id": "A101", "title": "Propulsion Assignment", "course": "RS101" },
-  { "_id": "A102", "title": "Combustion Analysis", "course": "RS101" },
-  { "_id": "A103", "title": "Nozzle Design Project", "course": "RS101" },
-  { "_id": "A201", "title": "Aerodynamics Quiz", "course": "RS102" },
-  { "_id": "A202", "title": "Flow Analysis", "course": "RS102" },
-  { "_id": "A203", "title": "Heating Analysis", "course": "RS102" },
-  { "_id": "A301", "title": "Structural Design Task", "course": "RS103" },
-  { "_id": "A302", "title": "Orbital Calculations", "course": "RS103" },
-  { "_id": "A303", "title": "Systems Engineering Exam", "course": "RS103" },
+  {
+    "_id": "A101",
+    "title": "Propulsion Assignment",
+    "course": "RS101",
+    "description": "this is an assignment relate to propulsion",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A102",
+    "title": "Combustion Analysis",
+    "course": "RS101",
+    "description": "this is an assignment related to combustion analysis",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A103",
+    "title": "Nozzle Design Project",
+    "course": "RS101",
+    "description": "this project involves the design of a nozzle for propulsion systems",
+    "points": 120,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A201",
+    "title": "Aerodynamics Quiz",
+    "course": "RS102",
+    "description": "a quiz on aerodynamics concepts",
+    "points": 20,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A202",
+    "title": "Flow Analysis",
+    "course": "RS102",
+    "description": "analysis of fluid dynamics in various systems",
+    "points": 40,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A203",
+    "title": "Heating Analysis",
+    "course": "RS102",
+    "description": "analysis of heating processes in engineering systems",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A301",
+    "title": "Structural Design Task",
+    "course": "RS103",
+    "description": "task involving structural design analysis",
+    "points": 15,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A302",
+    "title": "Orbital Calculations",
+    "course": "RS103",
+    "description": "calculations of orbital mechanics for satellite design",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A303",
+    "title": "Systems Engineering Exam",
+    "course": "RS103",
+    "description": "final exam for systems engineering course",
+    "points": 100,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
   {
     "_id": "A401",
     "title": "Satellite Communication Assignment",
-    "course": "RS104"
+    "course": "RS104",
+    "description": "assignment on satellite communication systems",
+    "points": 120,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
-  { "_id": "A402", "title": "Communication Link Design", "course": "RS104" },
-  { "_id": "A403", "title": "Signal Processing Quiz", "course": "RS104" },
-
-  { "_id": "A501", "title": "Launch Vehicle Analysis", "course": "RS105" },
-  { "_id": "A502", "title": "Payload Integration Project", "course": "RS105" },
-  { "_id": "A503", "title": "Launch Dynamics Quiz", "course": "RS105" },
-
-  { "_id": "A601", "title": "Space Mission Design", "course": "RS106" },
-  { "_id": "A602", "title": "Mission Planning Task", "course": "RS106" },
+  {
+    "_id": "A402",
+    "title": "Communication Link Design",
+    "course": "RS104",
+    "description": "design of communication links for satellites",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A403",
+    "title": "Signal Processing Quiz",
+    "course": "RS104",
+    "description": "quiz on signal processing techniques for communication",
+    "points": 50,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
+  {
+    "_id": "A501",
+    "title": "Launch Vehicle Analysis",
+    "course": "RS105",
+    "description": "analysis of launch vehicle design and performance",
+    "points": 120,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A502",
+    "title": "Payload Integration Project",
+    "course": "RS105",
+    "description": "project on payload integration for space missions",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A503",
+    "title": "Launch Dynamics Quiz",
+    "course": "RS105",
+    "description": "quiz on dynamics involved in rocket launches",
+    "points": 100,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
+  {
+    "_id": "A601",
+    "title": "Space Mission Design",
+    "course": "RS106",
+    "description": "designing space missions including payloads and trajectories",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A602",
+    "title": "Mission Planning Task",
+    "course": "RS106",
+    "description": "task on mission planning and resource allocation for space exploration",
+    "points": 20,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
   {
     "_id": "A603",
     "title": "Trajectory Calculation Assignment",
-    "course": "RS106"
+    "course": "RS106",
+    "description": "calculations for space mission trajectories",
+    "points": 20,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
-
   {
     "_id": "A701",
     "title": "Thermal Protection System Analysis",
-    "course": "RS107"
+    "course": "RS107",
+    "description": "analysis of thermal protection systems in space vehicles",
+    "points": 30,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
   {
     "_id": "A702",
     "title": "Heat Transfer Mechanisms Project",
-    "course": "RS107"
+    "course": "RS107",
+    "description": "project focused on heat transfer mechanisms in space exploration",
+    "points": 20,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
-  { "_id": "A703", "title": "Thermal Systems Design Task", "course": "RS107" },
-
+  {
+    "_id": "A703",
+    "title": "Thermal Protection Quiz",
+    "course": "RS107",
+    "description": "quiz on thermal protection materials and techniques",
+    "points": 20,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
   {
     "_id": "A801",
-    "title": "Attitude Control System Assignment",
-    "course": "RS108"
+    "title": "Satellite Design Assignment",
+    "course": "RS108",
+    "description": "assignment on the design of satellites for various missions",
+    "points": 10,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
-  { "_id": "A802", "title": "Control System Simulation", "course": "RS108" },
-  { "_id": "A803", "title": "Stability and Control Exam", "course": "RS108" },
-
-  { "_id": "A901", "title": "Satellite Navigation Systems", "course": "RS109" },
-  { "_id": "A902", "title": "GPS Signal Analysis", "course": "RS109" },
+  {
+    "_id": "A802",
+    "title": "Orbital Insertion Project",
+    "course": "RS108",
+    "description": "project focused on orbital insertion and satellite deployment",
+    "points": 100,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
+  {
+    "_id": "A803",
+    "title": "Communication System Integration",
+    "course": "RS108",
+    "description": "integration of satellite communication systems",
+    "points": 120,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A901",
+    "title": "Spacecraft Systems Overview",
+    "course": "RS109",
+    "description": "overview of various spacecraft systems and their roles",
+    "points": 100,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A902",
+    "title": "Launch Vehicle Performance Analysis",
+    "course": "RS109",
+    "description": "analysis of launch vehicle performance and optimization",
+    "points": 50,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
   {
     "_id": "A903",
-    "title": "Satellite-Based Navigation Task",
-    "course": "RS109"
+    "title": "Payload Design and Integration",
+    "course": "RS109",
+    "description": "design and integration of payloads for spacecraft missions",
+    "points": 100,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-
   {
     "_id": "A1001",
-    "title": "Space Debris and Collision Avoidance",
-    "course": "RS110"
+    "title": "Space Mission Cost Analysis",
+    "course": "RS110",
+    "description": "analyzing the cost aspects of planning and executing a space mission",
+    "points": 75,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
   },
-  { "_id": "A1002", "title": "Collision Risk Analysis", "course": "RS110" },
-  { "_id": "A1003", "title": "Debris Mitigation Project", "course": "RS110" },
+  {
+    "_id": "A1002",
+    "title": "Space Exploration Ethics Discussion",
+    "course": "RS110",
+    "description": "discussion on the ethical considerations of space exploration",
+    "points": 100,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1003",
+    "title": "Spacecraft Assembly Project",
+    "course": "RS110",
+    "description": "project involving the assembly and testing of a spacecraft model",
+    "points": 120,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
 
-  { "_id": "A1101", "title": "Rocket Engine Testing", "course": "RS111" },
-  { "_id": "A1102", "title": "Test Stand Design Task", "course": "RS111" },
-  { "_id": "A1103", "title": "Test Data Analysis", "course": "RS111" },
-
+  {
+    "_id": "A1101",
+    "title": "Advanced Propulsion Concepts",
+    "course": "RS110",
+    "description": "in-depth study of advanced propulsion systems and their applications",
+    "points": 150,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1102",
+    "title": "Space Travel Logistics Project",
+    "course": "RS110",
+    "description": "project covering logistics and planning for space travel missions",
+    "points": 100,
+    "due_date": "June 8 at 11:59 pm",
+    "avaliable_from_date": "June 1 at 9:00 am",
+    "avaliable_until_date": "June 9 at 11:59 pm"
+  },
+  {
+    "_id": "A1103",
+    "title": "Propulsion System Analysis",
+    "course": "RS110",
+    "description": "detailed analysis of propulsion system efficiency and performance",
+    "points": 120,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
   {
     "_id": "A1201",
-    "title": "Microgravity Effects on Materials",
-    "course": "RS112"
+    "title": "Astronautical Engineering Assignment",
+    "course": "RS111",
+    "description": "comprehensive assignment on astronautical engineering principles",
+    "points": 100,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-  { "_id": "A1202", "title": "Materials Science in Space", "course": "RS112" },
+  {
+    "_id": "A1202",
+    "title": "Mission Control Simulation",
+    "course": "RS111",
+    "description": "simulation project for mission control operations",
+    "points": 190,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
   {
     "_id": "A1203",
-    "title": "Space Environment Impact Quiz",
-    "course": "RS112"
+    "title": "Systems Failure Analysis",
+    "course": "RS111",
+    "description": "assignment focusing on the analysis of system failures and solutions",
+    "points": 160,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-
-  { "_id": "A1301", "title": "Advanced Propulsion Systems", "course": "RS113" },
-  { "_id": "A1302", "title": "Ion Thruster Design", "course": "RS113" },
-  { "_id": "A1303", "title": "Plasma Propulsion Exam", "course": "RS113" },
+  {
+    "_id": "A1301",
+    "title": "Space Exploration Technologies",
+    "course": "RS112",
+    "description": "exploration of the latest technologies used in space exploration",
+    "points": 200,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1302",
+    "title": "Robotics in Space Missions",
+    "course": "RS112",
+    "description": "study on the use of robotics in modern space missions",
+    "points": 175,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A1303",
+    "title": "Space Habitat Design",
+    "course": "RS112",
+    "description": "project on the design of space habitats for long-term missions",
+    "points": 150,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
 
   {
     "_id": "A1401",
-    "title": "Space Law and Policy Assignment",
-    "course": "RS114"
+    "title": "Deep Space Communication Assignment",
+    "course": "RS114",
+    "description": "assignment on the principles of deep space communication",
+    "points": 160,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
   {
     "_id": "A1402",
-    "title": "International Space Regulations",
-    "course": "RS114"
+    "title": "Signal Modulation Techniques Project",
+    "course": "RS114",
+    "description": "project exploring various signal modulation techniques for space communication",
+    "points": 140,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
   },
-  { "_id": "A1403", "title": "Space Policy Analysis Task", "course": "RS114" },
-
+  {
+    "_id": "A1403",
+    "title": "Data Transmission Analysis",
+    "course": "RS114",
+    "description": "analysis of data transmission and error correction methods",
+    "points": 130,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
   {
     "_id": "A1501",
-    "title": "Artificial Intelligence in Space Systems",
-    "course": "RS115"
+    "title": "Rocket Fuel Composition Study",
+    "course": "RS115",
+    "description": "study on the composition and properties of rocket fuel",
+    "points": 150,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-  { "_id": "A1502", "title": "AI Control Systems Design", "course": "RS115" },
+  {
+    "_id": "A1502",
+    "title": "Combustion Efficiency Project",
+    "course": "RS115",
+    "description": "project analyzing the efficiency of combustion processes",
+    "points": 175,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
   {
     "_id": "A1503",
-    "title": "Machine Learning Applications in Space",
-    "course": "RS115"
+    "title": "Rocket Engine Design",
+    "course": "RS115",
+    "description": "design project focusing on creating an efficient rocket engine",
+    "points": 200,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
   },
-
   {
     "_id": "A1601",
-    "title": "Human Spaceflight Assignment",
-    "course": "RS116"
+    "title": "Orbital Mechanics Examination",
+    "course": "RS116",
+    "description": "comprehensive examination on orbital mechanics concepts",
+    "points": 150,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
   {
     "_id": "A1602",
-    "title": "Life Support Systems Project",
-    "course": "RS116"
+    "title": "Satellite Orbit Design",
+    "course": "RS116",
+    "description": "assignment on designing stable orbits for satellites",
+    "points": 140,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-  { "_id": "A1603", "title": "Space Habitat Design Task", "course": "RS116" },
-
-  { "_id": "A1701", "title": "Lunar Exploration Mission", "course": "RS117" },
-  { "_id": "A1702", "title": "Moon Base Design", "course": "RS117" },
-  { "_id": "A1703", "title": "Lunar Rover Project", "course": "RS117" },
-
-  { "_id": "A1801", "title": "Mars Exploration Assignment", "course": "RS118" },
-  { "_id": "A1802", "title": "Martian Atmosphere Analysis", "course": "RS118" },
-  { "_id": "A1803", "title": "Mars Rover Mission Task", "course": "RS118" },
-
+  {
+    "_id": "A1603",
+    "title": "Interplanetary Trajectory Planning",
+    "course": "RS116",
+    "description": "project on planning trajectories for interplanetary missions",
+    "points": 190,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1701",
+    "title": "Spacecraft Power Systems",
+    "course": "RS117",
+    "description": "assignment focusing on power generation and management systems for spacecraft",
+    "points": 170,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A1702",
+    "title": "Energy Storage Techniques",
+    "course": "RS117",
+    "description": "project exploring energy storage solutions in space applications",
+    "points": 150,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A1703",
+    "title": "Power Systems Efficiency Analysis",
+    "course": "RS117",
+    "description": "analysis on optimizing power systems for better efficiency",
+    "points": 180,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
+  {
+    "_id": "A1801",
+    "title": "Space Habitat Design",
+    "course": "RS118",
+    "description": "designing sustainable space habitats for long-term missions",
+    "points": 220,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1802",
+    "title": "Life Support Systems Project",
+    "course": "RS118",
+    "description": "project on the design and efficiency of life support systems",
+    "points": 200,
+    "due_date": "2024-10-27",
+    "avaliable_from_date": "2024-10-11",
+    "avaliable_until_date": "2024-10-16"
+  },
+  {
+    "_id": "A1803",
+    "title": "Sustainable Living in Space",
+    "course": "RS118",
+    "description": "assignment focusing on the sustainability of human habitats in space",
+    "points": 190,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
   {
     "_id": "A1901",
-    "title": "Astrobiology Research Project",
-    "course": "RS119"
+    "title": "Astrobiology Overview",
+    "course": "RS119",
+    "description": "overview of the study of life in the universe",
+    "points": 150,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-  { "_id": "A1902", "title": "Life Detection Methods", "course": "RS119" },
-  { "_id": "A1903", "title": "Astrobiology Data Analysis", "course": "RS119" },
-
+  {
+    "_id": "A1902",
+    "title": "Search for Extraterrestrial Life",
+    "course": "RS119",
+    "description": "project examining techniques and missions aimed at finding extraterrestrial life",
+    "points": 180,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
+  {
+    "_id": "A1903",
+    "title": "Microbiology in Space",
+    "course": "RS119",
+    "description": "assignment on the impact of space conditions on microorganisms",
+    "points": 160,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
+  },
   {
     "_id": "A2001",
-    "title": "Exoplanet Detection Assignment",
-    "course": "RS120"
+    "title": "Space Law and Policy",
+    "course": "RS120",
+    "description": "assignment covering the legal aspects and policy issues of space exploration",
+    "points": 140,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
   {
     "_id": "A2002",
-    "title": "Exoplanet Atmosphere Analysis",
-    "course": "RS120"
+    "title": "Space Habitat Design Project",
+    "course": "RS120",
+    "description": "project focused on designing a sustainable space habitat for long-term missions",
+    "points": 220,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
-  { "_id": "A2003", "title": "Exoplanet Mission Planning", "course": "RS120" },
-
+  {
+    "_id": "A2003",
+    "title": "Life Support Systems Analysis",
+    "course": "RS120",
+    "description": "analysis of life support systems used in spacecraft for extended missions",
+    "points": 180,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
+  },
   {
     "_id": "A2101",
     "title": "Interstellar Travel Concepts",
-    "course": "RS121"
+    "course": "RS121",
+    "description": "overview of theoretical concepts and current research on interstellar travel",
+    "points": 250,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   },
   {
     "_id": "A2102",
-    "title": "Warp Drive and Propulsion Systems",
-    "course": "RS121"
+    "title": "Exoplanetary Exploration Project",
+    "course": "RS121",
+    "description": "project discussing the methods and challenges of exploring exoplanets",
+    "points": 230,
+    "due_date": "2024-11-23",
+    "avaliable_from_date": "2024-11-23",
+    "avaliable_until_date": "2024-11-23"
   },
   {
     "_id": "A2103",
-    "title": "Interstellar Communication Project",
-    "course": "RS121"
+    "title": "Advanced Spacecraft Propulsion Systems",
+    "course": "RS121",
+    "description": "detailed study on next-generation propulsion systems for deep space missions",
+    "points": 240,
+    "due_date": "2024-12-23",
+    "avaliable_from_date": "2024-12-11",
+    "avaliable_until_date": "2024-12-13"
   }
 ]
