@@ -19,7 +19,7 @@ const AccountNavigation = () => {
             className="list-group-item active border border-0 text-nowrap"
             to="/kanbas/account/signOut"
           >
-            Sign Out
+            Sign Up
           </Link>
           <br />
         </>

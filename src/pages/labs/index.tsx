@@ -5,6 +5,7 @@ import Lab2 from "../labs/lab2/index";
 import TOC from "./labNavigation";
 import Lab4 from "./lab4";
 import Lab3 from "./lab3";
+import Lab5 from "./lab5";
 import store from "./store";
 import { Provider } from "react-redux";
 const Labs = () => {
@@ -23,6 +24,7 @@ const Labs = () => {
           <Route path="labs2" element={<Lab2 />}></Route>
           <Route path="labs3/*" element={<Lab3 />}></Route>
           <Route path="labs4/*" element={<Lab4 />}></Route>
+          <Route path="labs5/*" element={<Lab5 />}></Route>
         </Routes>
       </Provider>
     </div>

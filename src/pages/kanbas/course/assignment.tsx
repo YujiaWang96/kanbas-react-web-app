@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../index.css";
 import LessonControlButtons from "./modules/LessonControlButton";
 import { BsGripVertical } from "react-icons/bs";
@@ -7,11 +7,12 @@ import { FaAngleDown } from "react-icons/fa6";
 import { MdOutlineEventNote } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
-
+import * as assignmentClient from "../course/assigments/client";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
-import { deleteAssignment } from "./assigments/reducer";
+import { deleteAssignment, setAssignments } from "./assigments/reducer";
+import * as coursesClient from "./client";
 
 export default function Assignment({
   titles,
@@ -49,12 +50,24 @@ export default function Assignment({
     navigate("add");
   };
 
-  const handleDelete = (id: string) => {
-    const target = assignments.find((assignment: any) => assignment._id === id);
-    if (target) {
-      dispatch(deleteAssignment(target._id)); // 只传递作业的 ID
-    }
+  // const handleDelete = (id: string) => {
+  //   const target = assignments.find((assignment: any) => assignment._id === id);
+  //   if (target) {
+  //     dispatch(deleteAssignment(target._id)); // 只传递作业的 ID
+  //   }
+  // };
+  const removeAssignment = async (assignmentId: string) => {
+    await assignmentClient.deleteAssignment(assignmentId);
+    dispatch(deleteAssignment(assignmentId));
   };
+  // const fetchAssignment = async () => {
+  //   const assignments = await coursesClient.findModulesForCourse(cid as string);
+  //   dispatch(setAssignments(assignments));
+  // };
+  // useEffect(() => {
+  //   fetchAssignment();
+  // }, []);
+
   return (
     <div>
       <ul id="wd-modules" className="list-group rounded-0">
@@ -149,7 +162,7 @@ export default function Assignment({
                       <LessonControlButtons />
                       <FaTrash
                         style={{ color: "red", marginTop: "1px" }}
-                        onClick={() => handleDelete(assignment._id)}
+                        onClick={() => removeAssignment(assignment._id)}
                       />
                     </div>
                   </div>

@@ -5,7 +5,7 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment } from "./assigments/reducer";
-
+import { updateAssignment1 } from "./assigments/client";
 const AssignmentForm = ({
   titles,
   setTitles,
@@ -48,7 +48,10 @@ const AssignmentForm = ({
   if (!target) {
     return <div>Assignment not found</div>;
   }
-
+  const update_Assignment = async (assignment: any) => {
+    await updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
   const handleUpdate = () => {
     const newAssignment = {
       _id: target._id, // Use current timestamp for unique ID

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { addAssignment } from "./assigments/reducer";
+import { createAssignmentForCourse } from "./client";
 
 interface AddingAssignmentProps {
   titles: string;
@@ -35,6 +36,30 @@ const AddingAssignment: React.FC<AddingAssignmentProps> = ({
   const dispatch = useDispatch();
   const { cid } = useParams<{ cid: string }>(); // Ensure cid is a string
   const navigate = useNavigate();
+
+  // const createModuleForCourse = async () => {
+  //   if (!cid) return;
+  //   const newModule = { name: moduleName, course: cid };
+  //   const module = await coursesClient.createModuleForCourse(cid, newModule);
+  //   dispatch(addModule(module));
+  // };
+
+  const createAssignment = async () => {
+    if (!cid) return;
+    const newAssignment = {
+      _id: new Date().getTime().toString(),
+      title: titles,
+      course: cid,
+      description,
+      points,
+      due_date: dueDate,
+      available_from_date: availableFromDate,
+      available_until_date: availableUntilDate,
+    };
+    const assignments = await createAssignmentForCourse(cid, newAssignment);
+    dispatch(addAssignment(assignments));
+    navigate(`/kanbas/course/${cid}/assignment`);
+  };
   const handleSave = () => {
     const newAssignment = {
       _id: new Date().getTime().toString(), // Use current timestamp for unique ID
@@ -165,7 +190,11 @@ const AddingAssignment: React.FC<AddingAssignmentProps> = ({
           >
             Cancel
           </button>
-          <button type="submit" className="btn btn-danger" onClick={handleSave}>
+          <button
+            type="submit"
+            className="btn btn-danger"
+            onClick={createAssignment}
+          >
             Save
           </button>
         </div>

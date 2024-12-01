@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Account from "./acount/index";
 import Dashboard from "./dashboard";
 import NavigationPanel from "./navigationPanel";
 import Course from "./course";
 import "./index.css";
-import * as db from "../kanbas/Database";
+import * as courseClient from "./course/client";
+import * as client from "./course/client";
+import * as userClient from "./acount/client";
+//import * as db from "../kanbas/Database";
 import { useState } from "react";
-import store from "./store";
-import { Provider } from "react-redux";
+// import store from "./store";
+// import { Provider } from "react-redux";
 import ProtectedRoute from "./acount/ProtectedRoute";
+import Session from "./acount/session";
+import { useSelector } from "react-redux";
 
 const Kanbas = () => {
-  const [courses, setCourses] = useState<any>(db.courses);
+  const [courses, setCourses] = useState<any>([]);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [course, setCourse] = useState<any>({
     _id: "0",
     name: "New Course",
@@ -22,8 +28,9 @@ const Kanbas = () => {
     image: "/images/reactjs.jpg",
     description: "New Description",
   });
-  const addNewCourse = () => {
-    const newCourse = { ...course, _id: new Date().getTime().toString() }; // 创建新课程并生成唯一 ID
+  const addNewCourse = async () => {
+    // const newCourse = { ...course, _id: new Date().getTime().toString() }; // 创建新课程并生成唯一 ID
+    const newCourse = await userClient.createCourse(course);
 
     // 使用回调方式更新 courses 确保拿到最新的 courses 状态
     setCourses((prevCourses: any) => {
@@ -41,10 +48,12 @@ const Kanbas = () => {
       description: "New Description",
     });
   };
-  const deleteCourse = (courseId: string) => {
+  const deleteCourse = async (courseId: string) => {
+    const status = await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course: any) => course._id !== courseId));
   };
-  const updateCourse = () => {
+  const updateCourse = async () => {
+    await courseClient.updateCourse(course);
     setCourses(
       //更新完后重新setcouses得到新courses数组
       courses.map((c: any) => {
@@ -57,8 +66,20 @@ const Kanbas = () => {
       })
     );
   };
+  const fetchCourses = async () => {
+    try {
+      const courses = await userClient.findMyCourses();
+      setCourses(courses);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, [currentUser]);
+
   return (
-    <Provider store={store}>
+    <Session>
       <div>
         <NavigationPanel />
         <div className="wd-main-content-offset p-3">
@@ -98,7 +119,8 @@ const Kanbas = () => {
           </Routes>
         </div>
       </div>
-    </Provider>
+    </Session>
+    // </Provider>
   );
 };
 export default Kanbas;

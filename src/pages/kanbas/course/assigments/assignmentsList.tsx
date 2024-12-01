@@ -6,6 +6,9 @@ import { FaAngleDown, FaPlus } from "react-icons/fa6";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { Link, NavigateFunction } from "react-router-dom";
 import LessonControlButtons from "../modules/LessonControlButton";
+import * as assignmentClient from "./client";
+import Assignment from "../assignment";
+import { deleteAssignment } from "./reducer";
 interface Assignment {
   _id: string;
   course: string;
@@ -93,3 +96,9 @@ const AssignmentsList: React.FC<AssignmentsListProps> = ({
 };
 
 export default AssignmentsList;
+function dispatch(arg0: {
+  payload: any;
+  type: "assignments/deleteAssignment";
+}) {
+  throw new Error("Function not implemented.");
+}

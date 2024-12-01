@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as db from "../Database";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { fetchAllCourses } from "../course/client";
 
 const Dashboard = ({
   courses,
@@ -24,17 +25,6 @@ const Dashboard = ({
   const { enrollments } = db;
   const Allcourses = db.courses;
 
-  // Filter out the courses that the current user is enrolled in
-  // const userCourses = courses.filter((course: any) =>
-  //   enrollments.some(
-  //     (enrollment: any) =>
-  //       enrollment.user === currentUser._id && enrollment.course === course._id
-  //   )
-  // );
-
-  // State to toggle enrollment view
-
-  // Interface for enrolled courses
   interface CourseModule {
     _id: string;
     name: string;
