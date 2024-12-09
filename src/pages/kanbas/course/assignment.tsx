@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 import LessonControlButtons from "./modules/LessonControlButton";
 import { BsGripVertical } from "react-icons/bs";
@@ -44,29 +44,31 @@ export default function Assignment({
   const { assignments } = useSelector((state: any) => state.AssignmentReducer);
   // const assignments = db.assignments;
   const { cid } = useParams(); // 获取课程 ID
+
+  const [Assignments, setAssignments] = useState(assignments);
+  const getAssignmentsForCourse = async (courseId: string) => {
+    setAssignments(await assignmentClient.findAssignmentsForCourse(courseId));
+  };
+  useEffect(() => {
+    if (cid) {
+      getAssignmentsForCourse(cid);
+    }
+  }, [cid, Assignments]);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const addingAssignments = () => {
     navigate("add");
   };
 
-  // const handleDelete = (id: string) => {
-  //   const target = assignments.find((assignment: any) => assignment._id === id);
-  //   if (target) {
-  //     dispatch(deleteAssignment(target._id)); // 只传递作业的 ID
-  //   }
-  // };
   const removeAssignment = async (assignmentId: string) => {
     await assignmentClient.deleteAssignment(assignmentId);
     dispatch(deleteAssignment(assignmentId));
   };
-  // const fetchAssignment = async () => {
-  //   const assignments = await coursesClient.findModulesForCourse(cid as string);
-  //   dispatch(setAssignments(assignments));
-  // };
-  // useEffect(() => {
-  //   fetchAssignment();
-  // }, []);
+  const showing = async (assignmentId: string) => {
+    const deleted = await assignmentClient.deleteAssignment(assignmentId);
+    console.log(deleted);
+  };
 
   return (
     <div>
@@ -123,51 +125,54 @@ export default function Assignment({
           </div>
 
           <ul className="wd-lessons list-group rounded-0">
-            {assignments
-              .filter((assignment: any) => assignment.course === cid)
-              .map((assignment: any) => (
-                <li
-                  key={assignment._id}
-                  className="wd-lesson list-group-item p-3 ps-1"
+            {Assignments.filter(
+              (assignment: any) => assignment.course === cid
+            ).map((assignment: any) => (
+              <li
+                key={assignment._id}
+                className="wd-lesson list-group-item p-3 ps-1"
+                style={{
+                  display: "flex",
+                  justifyItems: "center",
+                  alignItems: "center",
+                }}
+              >
+                <BsGripVertical className="me-2 fs-3" />
+                <MdOutlineEventNote style={{ color: "green" }} />
+                &nbsp;
+                <div
                   style={{
-                    display: "flex",
+                    display: "flex ",
                     justifyItems: "center",
                     alignItems: "center",
                   }}
                 >
-                  <BsGripVertical className="me-2 fs-3" />
-                  <MdOutlineEventNote style={{ color: "green" }} />
-                  &nbsp;
-                  <div
-                    style={{
-                      display: "flex ",
-                      justifyItems: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <p style={{ marginLeft: "10px" }}>
-                      <Link
-                        to={`/kanbas/course/${cid}/assignment/${assignment._id}`} // 动态生成 assignmentID
-                        style={{ color: "black", textDecoration: "none" }}
-                      >
-                        <strong>{assignment.title}</strong>
-                      </Link>
-                      <br />
-                      <span style={{ color: "red" }}>Multiple Modules</span> |
-                      Not available until {assignment.avaliable_from_date} at
-                      11:59pm| Due {assignment.avaliable_until_date} at 11:59pm
-                      | {assignment.points} pts
-                    </p>
-                    <div style={{ marginLeft: "250px", display: "flex" }}>
-                      <LessonControlButtons />
-                      <FaTrash
-                        style={{ color: "red", marginTop: "1px" }}
-                        onClick={() => removeAssignment(assignment._id)}
-                      />
-                    </div>
+                  <p style={{ marginLeft: "10px" }}>
+                    <Link
+                      to={`/kanbas/course/${cid}/assignment/${assignment._id}`} // 动态生成 assignmentID
+                      style={{ color: "black", textDecoration: "none" }}
+                    >
+                      <strong>{assignment.title}</strong>
+                    </Link>
+                    <br />
+                    <span style={{ color: "red" }}>Multiple Modules</span> | Not
+                    available until {assignment.avaliable_from_date} at 11:59pm|
+                    Due {assignment.avaliable_until_date} at 11:59pm |{" "}
+                    {assignment.points} pts
+                  </p>
+                  <div style={{ marginLeft: "250px", display: "flex" }}>
+                    <LessonControlButtons />
+                    <FaTrash
+                      style={{ color: "red", marginTop: "1px" }}
+                      onClick={() => {
+                        removeAssignment(assignment._id);
+                        showing(assignment._id);
+                      }}
+                    />
                   </div>
-                </li>
-              ))}
+                </div>
+              </li>
+            ))}
           </ul>
         </li>
       </ul>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { addAssignment } from "./assigments/reducer";
 import { createAssignmentForCourse } from "./client";
+import * as assignmentClient from "../course/assigments/client";
 
 interface AddingAssignmentProps {
   titles: string;
@@ -44,37 +45,57 @@ const AddingAssignment: React.FC<AddingAssignmentProps> = ({
   //   dispatch(addModule(module));
   // };
 
-  const createAssignment = async () => {
-    if (!cid) return;
-    const newAssignment = {
-      _id: new Date().getTime().toString(),
-      title: titles,
-      course: cid,
-      description,
-      points,
-      due_date: dueDate,
-      available_from_date: availableFromDate,
-      available_until_date: availableUntilDate,
-    };
-    const assignments = await createAssignmentForCourse(cid, newAssignment);
-    dispatch(addAssignment(assignments));
-    navigate(`/kanbas/course/${cid}/assignment`);
-  };
-  const handleSave = () => {
-    const newAssignment = {
-      _id: new Date().getTime().toString(), // Use current timestamp for unique ID
-      title: titles,
-      course: cid,
-      description,
-      points,
-      due_date: dueDate,
-      avaliable_from_date: availableFromDate,
-      avaliable_until_date: availableUntilDate,
-    };
+  // const createAssignment = async () => {
+  //   if (!cid) return;
+  //   const newAssignment = {
+  //     _id: new Date().getTime().toString(),
+  //     title: titles,
+  //     course: cid,
+  //     description,
+  //     points,
+  //     due_date: dueDate,
+  //     available_from_date: availableFromDate,
+  //     available_until_date: availableUntilDate,
+  //   };
+  //   const assignments = await createAssignmentForCourse(cid, newAssignment);
+  //   dispatch(addAssignment(assignments));
+  //   navigate(`/kanbas/course/${cid}/assignment`);
+  // };
 
-    dispatch(addAssignment(newAssignment)); // Dispatch action to add assignment
+  const newAssignment = {
+    _id: new Date().getTime().toString(),
+    title: titles,
+    course: cid,
+    description,
+    points,
+    due_date: dueDate,
+    available_from_date: availableFromDate,
+    available_until_date: availableUntilDate,
+  };
+  const adding = async (courseId: any, assignment: any) => {
+    const theAssignment = await assignmentClient.createAssignmentForCourse(
+      courseId,
+      assignment
+    );
+    console.log(theAssignment);
     navigate(`/kanbas/course/${cid}/assignment`);
   };
+
+  // const handleSave = () => {
+  //   const newAssignment = {
+  //     _id: new Date().getTime().toString(), // Use current timestamp for unique ID
+  //     title: titles,
+  //     course: cid,
+  //     description,
+  //     points,
+  //     due_date: dueDate,
+  //     avaliable_from_date: availableFromDate,
+  //     avaliable_until_date: availableUntilDate,
+  //   };
+
+  //   dispatch(addAssignment(newAssignment)); // Dispatch action to add assignment
+  //   navigate(`/kanbas/course/${cid}/assignment`);
+  // };
 
   return (
     <div className="container mt-5">
@@ -193,7 +214,10 @@ const AddingAssignment: React.FC<AddingAssignmentProps> = ({
           <button
             type="submit"
             className="btn btn-danger"
-            onClick={createAssignment}
+            onClick={() => {
+              //createAssignment();
+              adding(cid, newAssignment);
+            }}
           >
             Save
           </button>

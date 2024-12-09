@@ -29,24 +29,23 @@ const Kanbas = () => {
     description: "New Description",
   });
   const addNewCourse = async () => {
-    // const newCourse = { ...course, _id: new Date().getTime().toString() }; // 创建新课程并生成唯一 ID
     const newCourse = await userClient.createCourse(course);
 
     // 使用回调方式更新 courses 确保拿到最新的 courses 状态
-    setCourses((prevCourses: any) => {
-      return [...prevCourses, newCourse]; // 将新课程添加到最新的 courses 数组中
-    });
-
+    // setCourses((prevCourses: any) => {
+    //   return [...prevCourses, newCourse];
+    // });
+    setCourses([...courses, newCourse]);
     // 重置课程表单为初始值
-    setCourse({
-      _id: "0",
-      name: "New Course",
-      number: "New Number",
-      startDate: "2023-09-10",
-      endDate: "2023-12-15",
-      image: "/images/reactjs.jpg",
-      description: "New Description",
-    });
+    // setCourse({
+    //   _id: "0",
+    //   name: "New Course",
+    //   number: "New Number",
+    //   startDate: "2023-09-10",
+    //   endDate: "2023-12-15",
+    //   image: "/images/reactjs.jpg",
+    //   description: "New Description",
+    // });
   };
   const deleteCourse = async (courseId: string) => {
     const status = await courseClient.deleteCourse(courseId);

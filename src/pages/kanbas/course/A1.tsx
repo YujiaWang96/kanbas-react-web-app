@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AiOutlineCalendar } from "react-icons/ai";
@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment } from "./assigments/reducer";
 import { updateAssignment1 } from "./assigments/client";
+import * as assignmentClient from "../course/assigments/client";
 const AssignmentForm = ({
   titles,
   setTitles,
@@ -39,19 +40,23 @@ const AssignmentForm = ({
   const assignments = useSelector(
     (state: any) => state.AssignmentReducer.assignments
   );
-
+  const [Assignments, setAssignments] = useState(assignments);
+  const getAssignments = async (cid: any) => {
+    const assignments = await assignmentClient.findAssignmentsForCourse(cid);
+    setAssignments(assignments);
+  };
+  useEffect(() => {
+    getAssignments(cid);
+  }, []);
   // 查找目标 assignment
-  const target = assignments.find(
+  const target = Assignments.find(
     (assignment: any) => assignment.course === cid && assignment._id === aid
   );
 
   if (!target) {
     return <div>Assignment not found</div>;
   }
-  const update_Assignment = async (assignment: any) => {
-    await updateAssignment(assignment);
-    dispatch(updateAssignment(assignment));
-  };
+
   const handleUpdate = () => {
     const newAssignment = {
       _id: target._id, // Use current timestamp for unique ID
@@ -64,6 +69,23 @@ const AssignmentForm = ({
       avaliable_until_date: availableUntilDate,
     };
     dispatch(updateAssignment(newAssignment));
+    navigate(`/kanbas/course/${cid}/assignment`);
+  };
+
+  const newAssignment = {
+    _id: target._id, // Use current timestamp for unique ID
+    title: titles,
+    course: cid,
+    description: description,
+    points: points,
+    due_date: dueDate,
+    avaliable_from_date: availableFromDate,
+    avaliable_until_date: availableUntilDate,
+  };
+
+  const update_Assignment = async (assignment: any) => {
+    await assignmentClient.updateAssignment1(assignment);
+    dispatch(updateAssignment(assignment));
     navigate(`/kanbas/course/${cid}/assignment`);
   };
 
@@ -306,7 +328,7 @@ const AssignmentForm = ({
           <button
             type="submit"
             className="btn btn-danger"
-            onClick={handleUpdate}
+            onClick={() => update_Assignment(newAssignment)}
           >
             Save
           </button>

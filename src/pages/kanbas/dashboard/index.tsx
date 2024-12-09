@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import * as db from "../Database";
+import React, { useEffect, useState } from "react";
+//import * as db from "../Database";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { fetchAllCourses } from "../course/client";
+import * as coursesClient from "../course/client";
 
 const Dashboard = ({
   courses,
@@ -10,7 +10,7 @@ const Dashboard = ({
   setCourse,
   setCourses,
   addNewCourse,
-  deleteCourse,
+  //deleteCourse,
   updateCourse,
 }: {
   courses: any;
@@ -22,8 +22,16 @@ const Dashboard = ({
   updateCourse: any;
 }) => {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = db;
-  const Allcourses = db.courses;
+  //const { enrollments } = db;
+  //const Allcourses = db.courses;
+  const [Allcourses, setAllcourses] = useState([]);
+  const getAllCourses = async () => {
+    const courses = await coursesClient.fetchAllCourses();
+    setAllcourses(courses);
+  };
+  useEffect(() => {
+    getAllCourses();
+  }, [currentUser, Allcourses]);
 
   interface CourseModule {
     _id: string;
@@ -50,15 +58,19 @@ const Dashboard = ({
   const deleteEnrolledCourseFromEnrollment = (couseID: any) => {
     setEnrolled(enrolled.filter((course: any) => couseID !== course._id));
   };
-
+  const deleteCourse = async (courseId: string) => {
+    const status = await coursesClient.deleteCourse(courseId);
+    setCourses(courses.filter((course: any) => course._id !== courseId));
+  };
   const [publishedCourses, setPublishedCourses] = useState(
-    Allcourses.filter((course: any) =>
-      enrollments.some(
-        (enrollment: any) =>
-          enrollment.user === currentUser._id &&
-          enrollment.course === course._id
-      )
-    )
+    // Allcourses.filter((course: any) =>
+    //   enrollments.some(
+    //     (enrollment: any) =>
+    //       enrollment.user === currentUser._id &&
+    //       enrollment.course === course._id
+    //   )
+    // )
+    Allcourses
   );
   const addBackToPublishedCourse = (courseID: any) => {
     const target = Allcourses.find((course: any) => course._id === courseID);
@@ -88,7 +100,10 @@ const Dashboard = ({
             <button
               className="btn btn-primary float-end"
               id="wd-add-new-course-click"
-              onClick={addNewCourse}
+              onClick={() => {
+                addNewCourse();
+                getAllCourses();
+              }}
             >
               Add
             </button>
@@ -131,7 +146,7 @@ const Dashboard = ({
       <hr />
       <h2 id="wd-dashboard-published">
         {alreadyEnrolled ? (
-          <>Published Courses ({publishedCourses.length})</>
+          <>Published Courses ({Allcourses.length})</>
         ) : (
           <>Enrolled Courses ({enrolled.length})</>
         )}
@@ -140,7 +155,7 @@ const Dashboard = ({
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {alreadyEnrolled
-            ? publishedCourses
+            ? Allcourses
                 // courses
                 //     .filter((course: any) =>
                 //       enrollments.some(
