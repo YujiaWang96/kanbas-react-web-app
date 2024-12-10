@@ -10,6 +10,7 @@ import * as client from "./course/client";
 import * as userClient from "./acount/client";
 //import * as db from "../kanbas/Database";
 import { useState } from "react";
+
 // import store from "./store";
 // import { Provider } from "react-redux";
 import ProtectedRoute from "./acount/ProtectedRoute";
@@ -18,6 +19,7 @@ import { useSelector } from "react-redux";
 
 const Kanbas = () => {
   const [courses, setCourses] = useState<any>([]);
+
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [course, setCourse] = useState<any>({
     _id: "0",
@@ -29,7 +31,7 @@ const Kanbas = () => {
     description: "New Description",
   });
   const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
 
     // 使用回调方式更新 courses 确保拿到最新的 courses 状态
     // setCourses((prevCourses: any) => {
@@ -67,7 +69,7 @@ const Kanbas = () => {
   };
   const fetchCourses = async () => {
     try {
-      const courses = await userClient.findMyCourses();
+      const courses = await courseClient.fetchAllCourses();
       setCourses(courses);
     } catch (error) {
       console.error(error);

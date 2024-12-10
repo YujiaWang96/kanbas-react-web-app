@@ -177,7 +177,7 @@ const Dashboard = ({
                           className="wd-dashboard-course-link text-decoration-none text-dark"
                         >
                           <img
-                            src={course.image}
+                            src="/images/reactjs.jpg"
                             width="100%"
                             height={160}
                             alt={course.name}
@@ -261,7 +261,7 @@ const Dashboard = ({
                         className="wd-dashboard-course-link text-decoration-none text-dark"
                       >
                         <img
-                          src={course.image}
+                          src="/images/reactjs.jpg"
                           width="100%"
                           height={160}
                           alt={course.name}
